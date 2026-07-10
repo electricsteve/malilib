@@ -15,7 +15,7 @@ public class SubChunkPos extends Vec3i
 {
     public static final Codec<SubChunkPos> BLOCK_POS_CODEC = RecordCodecBuilder.create(
             inst -> inst.group(
-                    BlockPos.CODEC.fieldOf("pos").forGetter(BlockPos::new)
+                    BlockPos.CODEC.fieldOf("pos").forGetter(SubChunkPos::asBlockPos)
             ).apply(inst, SubChunkPos::new)
     );
     public static final Codec<SubChunkPos> VEC3I_CODEC = RecordCodecBuilder.create(
@@ -35,6 +35,10 @@ public class SubChunkPos extends Vec3i
     public SubChunkPos(int x, int y, int z)
     {
         super(x, y, z);
+    }
+
+    public static BlockPos asBlockPos(final Vec3i vec3i) {
+        return new BlockPos(vec3i.getX(), vec3i.getY(), vec3i.getZ());
     }
 
     public static class DistanceComparator implements Comparator<SubChunkPos>

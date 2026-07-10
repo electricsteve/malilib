@@ -1,7 +1,7 @@
 package fi.dy.masa.malilib.mixin.render;
 
-import com.mojang.blaze3d.pipeline.BindGroupLayout;
-import com.mojang.blaze3d.shaders.UniformType;
+import com.mojang.renderpearl.api.pipeline.BindGroupLayout;
+import com.mojang.renderpearl.api.pipeline.UniformType;
 import net.minecraft.client.renderer.BindGroupLayouts;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -17,5 +17,9 @@ public class MixinBindGroupLayouts
 	private static void registerBindGroups(CallbackInfo ci)
 	{
 		MaLiLibPipelines.LEGACY_TERRAIN_GROUP = BindGroupLayout.builder().withUniform("ChunkFix", UniformType.UNIFORM_BUFFER).build();
+		MaLiLibPipelines.MATRICES_PROJECTION = BindGroupLayout.builder()
+				.withUniform("DynamicTransforms", UniformType.UNIFORM_BUFFER)
+				.withUniform("Projection", UniformType.UNIFORM_BUFFER)
+				.build();
 	}
 }

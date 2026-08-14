@@ -78,6 +78,7 @@ public class MaLiLibConfigs implements IConfigHandler
         public static final List<IHotkey> HOTKEY_LIST = ImmutableList.of(
                 ENABLE_ACTIONBAR_MESSAGES,
                 ENABLE_CONFIG_SWITCHER,
+                ENABLE_LARGE_BARREL_PREVIEW,
                 OPEN_GUI_CONFIGS,
                 TRANSLATION_OVERRIDES
         );
